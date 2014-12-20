@@ -92,9 +92,9 @@ firstapp.config(['$routeProvider',
 firstapp.filter('imagepath', function () {
     return function (input) {
         if (input == null) {
-            return "http://www.wohlig.co.in/property/uploads/2239a46835dc42bc7a6acade8f8517e9.jpg";
+            return base_url+"/uploads/2239a46835dc42bc7a6acade8f8517e9.jpg";
         } else {
-            return "http://www.wohlig.co.in/property/uploads/" + input;
+            return base_url+"/uploads/" + input;
         }
     };
 });

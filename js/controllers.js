@@ -415,6 +415,7 @@ phonecatControllers.controller('innerpropertyctrl',
             long = data.property.long;
             $scope.amenities = data.propertyamenity;
             $scope.propertyimage = data.propertyimage;
+            $scope.propertyconstructionupdate = data.propertyconstructionupdate;
             $scope.bannerimage = data.bannerimage;
             console.log(data);
             

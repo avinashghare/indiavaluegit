@@ -1,6 +1,7 @@
 var service = angular.module('Service', []);
 service.factory('MainJson', function ($http) {
-    var resturl = "http://www.indiavaluehomes.com/admin/index.php/";
+//    var resturl = "http://www.indiavaluehomes.com/admin/index.php/";
+    var resturl = base_url+"/index.php/";
 //    var resturl = "http://localhost/indiavaluehomesall/admin/index.php/";
     return {
         allcities: function () {

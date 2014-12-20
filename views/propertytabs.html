@@ -22,6 +22,9 @@
             <li ng-hide="property.propertywalkthrough==''">
                 <a ng-click="gotowalkthrough()">walk through</a>
             </li>
+            <li ng-hide="property.brochure==''">
+                <a href="{{template.adminimage+property.brochure}}" ng-click="#" class="brochure" target="_blank">Brochure</a>
+            </li>
             <li ng-hide="property.propertyspecialoffers==''">
                 <a ng-click="specialoffers()" class="specialoffer">special offer</a>
             </li>
