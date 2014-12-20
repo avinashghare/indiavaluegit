@@ -540,6 +540,7 @@ class Property_model extends CI_Model
 		")->result();
 $query['apartment']=$this->db->query("SELECT `apartment`.`id` as `id`,`apartment`.`property`,`property`.`name` AS `propertyname`,`apartment`.`Config` as `config`,`apartment`.`area` as `area`,`apartment`.`price`,`apartment`.`floorplan` FROM `apartment` INNER JOIN `property` ON `property`.`id`=`apartment`.`property` WHERE `property`='$property'")->result();
 		$query['propertyimage']=$this->db->query("SELECT `image`,`order`,`is_default` FROM `propertyimage` WHERE `property`='$property'")->result();
+		$query['propertyconstructionupdate']=$this->db->query("SELECT `image`,`order` FROM `propertyconstructionupdate` WHERE `property`='$property'")->result();
 $query['propertyapartment']=$this->db->query("SELECT * FROM `apartment`")->result();
 		$query['propertyamenity']=$this->db->query("SELECT `amenity`.`name`,`amenity`.`icon` FROM `propertyamenity`
 		INNER JOIN `amenity` ON `propertyamenity`.`amenity`=`amenity`.`id`

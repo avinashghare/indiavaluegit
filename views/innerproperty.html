@@ -227,7 +227,18 @@
     <p ng-hide="property.propertyspecialoffers==''" class="property-desc" style="font-weight: bold;
 font-size: 130%;padding: 0 12px;">{{property.propertyspecialoffers}}</p>
 
+    <h5 id="gallery-details" ng-hide="propertyconstructionupdate.length==0" >CONSTRUCTION UPDATE</h5>
+    <div class="property-gallery ">
 
+        <div class="row">
+
+            <div class="col-xs-4" ng-repeat="constructionupdate in propertyconstructionupdate">
+                <img src="{{template.adminimage+constructionupdate.image}}" class="img img-thumbnail">
+            </div>
+
+        </div>
+
+    </div>
     <!--
         <h5 id="contact-details">Contact</h5>
         <div class="row">

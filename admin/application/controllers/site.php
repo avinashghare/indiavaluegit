@@ -2370,7 +2370,7 @@ $id2=$this->input->get("id2");
                $data['alertsuccess']="Construction Update created Successfully.";
 			
 			$data['redirect']="site/viewconstructionupdate?id=".$property;
-			$this->load->view("redirect",$data);
+			$this->load->view("redirect2",$data);
 		}
 	}
     
