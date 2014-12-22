@@ -10,6 +10,7 @@
 <li><a href="<?php echo site_url('site/viewpropertywishlist?id=').$before['property']->id; ?>">Property Wishlist</a></li>
 <li><a href="<?php echo site_url('site/viewpropertycomment?id=').$before['property']->id; ?>">Comment</a></li>
 <li><a href="<?php echo site_url('site/viewpropertyapartment?id=').$before['property']->id; ?>">Apartment</a></li>
+<li><a href="<?php echo site_url('site/addbrochure?id=').$before['property']->id; ?>">Brochure</a></li>
 </ul>
 </div>
 </section>

@@ -97,15 +97,14 @@
 					
                     <div class=" form-group">
                     
+<!--
                       <label class="col-sm-2 control-label" for="normal-field">Brochure</label>
                       <div class="col-sm-4">
                         <input type="file" id="normal-field" class="form-control" name="brochure" value="<?php echo set_value('brochure');?>">
                       </div>
-                      <?php
-echo $before['property']->brochure;
-                        ?>
-<!--                      <label class="col-sm-2 control-label" for="normal-field">(Upload Only .doc, .pdf Or .docx)</label>-->
+                      <label class="col-sm-2 control-label" for="normal-field">(Upload Only .doc, .pdf Or .docx)</label>
                     </div>
+-->
                 
 				<div class=" form-group">
 				  <label class="col-sm-2 control-label" for="normal-field">Image</label>

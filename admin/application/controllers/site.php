@@ -843,17 +843,17 @@ $id2=$this->input->get("id2");
                 
 			}
             
-                
-            $config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'pdf|doc|docx';
-			$this->load->library('upload', $config);
-			$filename="brochure";
-			$brochure="";
-			if (  $this->upload->do_upload($filename))
-			{
-				$uploaddata = $this->upload->data();
-				$brochure=$uploaddata['file_name'];
-			}
+                $brochure="";
+//            $config['upload_path'] = './uploads/';
+//			$config['allowed_types'] = 'pdf|doc|docx';
+//			$this->load->library('upload', $config);
+//			$filename="brochure";
+//			$brochure="";
+//			if (  $this->upload->do_upload($filename))
+//			{
+//				$uploaddata = $this->upload->data();
+//				$brochure=$uploaddata['file_name'];
+//			}
             
             
 			if($this->property_model->createproperty($name,$area,$description,$lat,$long,$price,$builder,$propertytype,$status,$pricestartingfrom,$order,$brochure,$image)==0)
@@ -967,23 +967,23 @@ $id2=$this->input->get("id2");
                 $image=$this->property_model->getpropertyimagebyid($id);
                 $image=$image->image;
             }
-            
-            $config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'pdf|doc|docx';
-			$this->load->library('upload', $config);
-			$filename="brochure";
+//            $config['upload_path'] = './uploads/';
+//			$config['allowed_types'] = 'pdf';
+//			$this->load->library('upload', $config);
+//			$filename="brochure";
 			$brochure="";
-			if (  $this->upload->do_upload($filename))
-			{
-				$uploaddata = $this->upload->data();
-				$brochure=$uploaddata['file_name'];
-			}
-            
-            if($brochure=="")
-            {
-                $brochure=$this->property_model->getbrochurebyid($id);
-                $brochure=$brochure->brochure;
-            }
+//			if (  $this->upload->do_upload($filename))
+//			{
+//				$uploaddata = $this->upload->data();
+//				$brochure=$uploaddata['file_name'];
+//			}
+//            if($brochure=="")
+//            {
+//                $brochure=$this->property_model->getbrochurebyid($id);
+//                $brochure=$brochure->brochure;
+//            }
+//            
+//            echo $brochure."name";
             
             
             
@@ -2473,6 +2473,63 @@ $id2=$this->input->get("id2");
 		$this->load->view("redirect",$data);
 	}
     
+    
+    public function addbrochure()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data[ 'page' ] = 'addbrochure';
+		$data[ 'title' ] = ' Brochure';
+		$data['before']=$this->property_model->beforeeditproperty($this->input->get('id'));
+		$data[ 'propertyid' ] = $this->input->get('id');
+		$this->load->view( 'template', $data );	
+	}
+    function addbrochuresubmit()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->form_validation->set_rules('property','property','trim|required');
+
+		if($this->form_validation->run() == FALSE)	
+		{
+            
+			$data['alerterror'] = validation_errors();
+			$data[ 'page' ] = 'addbrochure';
+            $data[ 'title' ] = 'Brochure';
+            $data['before']=$this->property_model->beforeeditproperty($this->input->get('id'));
+            $data[ 'propertyid' ] = $this->input->get_post('id');
+            $this->load->view( 'template', $data );		
+		}
+		else
+		{
+			$property=$this->input->post('property');
+           
+            
+            $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'pdf|doc|docx';
+			$this->load->library('upload', $config);
+			$filename="brochure";
+			$brochure="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$brochure=$uploaddata['file_name'];
+			}
+            if($brochure=="")
+            {
+                $brochure=$this->property_model->getbrochurebyid($property);
+                $brochure=$brochure->brochure;
+            }
+//            echo $brochure;
+            if($this->property_model->addbrochure($property,$brochure)==0)
+               $data['alerterror']="New Brochure could not be Added.";
+            else
+               $data['alertsuccess']="Brochure added Successfully.";
+			
+			$data['redirect']="site/editproperty?id=".$property;
+			$this->load->view("redirect2",$data);
+		}
+	}
     
 }
 ?>

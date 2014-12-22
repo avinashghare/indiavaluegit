@@ -74,6 +74,19 @@ class Property_model extends CI_Model
 	}
 
 
+    
+	public function addbrochure($property,$brochure)
+	{
+		$data = array(
+			'brochure' => $brochure
+		);
+		$this->db->where( 'id', $property );
+		$q=$this->db->update( 'property', $data );
+		
+		return 1;
+	}
+
+
 	function viewproperty()
 	{
 		$query=$this->db->query("SELECT `property`.`id`,`property`.`pricestartingfrom`,`property`.`name`,`property`.`pricestartingfrom`,`property`.`order`,`property`.`brochure`,`property`.`image`,`area`.`name` as `area`,`property`.`price`,`propertytype`.`name` as `propertytype`,`builder`.`name` as `builder` FROM `property` 
@@ -508,7 +521,7 @@ class Property_model extends CI_Model
 		/*
 		if($bedroom != "" || $bedroom != 0 )
 			$where .= " AND `propertyinfo`.`bedroom` = '$bedroom'";	*/
-        $query=$this->db->query("SELECT `property`.`id`,`property`.`pricestartingfrom`,`property`.`order`,`property`.`name` as `property`,`propertyinfo`.`bedroom` as `bedroom`,`property`.`price`,`property`.`brochure`,`property`.`image`,`builder`.`name` as `builder`,`builderimage`.`image` as `builderimage`,`propertyinfo`.`propertyarea`,`propertyimage`.`image`,`city`.`name` as `city`,`area`.`name` as `locality`,`propertytype`.`name` as `propertytype` FROM `property`
+        $query=$this->db->query("SELECT `property`.`id`,`property`.`pricestartingfrom`,`property`.`order`,`property`.`name` as `property`,`propertyinfo`.`bedroom` as `bedroom`,`property`.`price`,`property`.`brochure`,`property`.`image`,`builder`.`name` as `builder`,`builderimage`.`image` as `builderimage`,`propertyinfo`.`propertyarea`,`propertyimage`.`image` AS `bigimage`,`city`.`name` as `city`,`area`.`name` as `locality`,`propertytype`.`name` as `propertytype` FROM `property`
 		INNER JOIN `builder` ON `builder`.`id`=`property`.`builder`
 		LEFT OUTER JOIN `builderimage` ON `builder`.`id`=`builderimage`.`builder`
 		INNER JOIN `propertytype` ON `property`.`propertytype`=`propertytype`.`id`
