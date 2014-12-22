@@ -206,7 +206,19 @@ phonecatControllers.controller('howitworks', ['$scope', 'TemplateService', 'Main
 
 
 }]);
+phonecatControllers.controller('sitemap', ['$scope', 'TemplateService', 'MainJson',
+                                        function ($scope, TemplateService, MainJson) {
+        TemplateService.changetitle("sitemap");
+        $scope.template = TemplateService;
+        TemplateService.slider = "";
+        TemplateService.sliderfooter = "";
+        TemplateService.content = "views/sitemap.html";
+        $scope.homeactive = "active";
 
+
+
+
+}]);
 phonecatControllers.controller('housingindex', ['$scope', 'TemplateService', 'MainJson',
                                         function ($scope, TemplateService, MainJson) {
         TemplateService.changetitle("Housing Index");

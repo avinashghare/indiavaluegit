@@ -39,6 +39,10 @@
 .abc img {
     width: 174px;
 }
+.links h3 {
+    border-bottom: 2px solid rgb(193, 180, 180);
+    padding-bottom: 7px;
+}
 .thank-txt{
 text-align:center;
 

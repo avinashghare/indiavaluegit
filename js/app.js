@@ -80,9 +80,9 @@ firstapp.config(['$routeProvider',
             templateUrl: 'views/template.html',
             controller: 'howitworks'
         }).
-          when('/thankyou', {
+          when('/sitemap', {
             templateUrl: 'views/template.html',
-            controller: 'thankyou'
+            controller: 'sitemap'
         }).
         otherwise({
             redirectTo: '/home'
